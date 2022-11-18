@@ -1,10 +1,10 @@
 import { api } from 'boot/axios';
-import {LocalStorage} from 'quasar';
-import {useAuthStore} from 'stores/auth';
-
-const auth = useAuthStore()
+import { LocalStorage } from 'quasar';
+import { useAuthStore } from 'stores/auth';
 function authHeader() {
-  let token = LocalStorage.getItem('token');
+  const userStore = useAuthStore();
+  let token = userStore.token;
+  console.log(token);
   if (token) {
     return {
       Authorization: 'Bearer ' + token.access,
@@ -27,8 +27,8 @@ class userService {
           { headers: { 'Content-Type': 'application/json' } }
         )
         .then((response) => {
-            LocalStorage.set('token', response.data);
-            auth.$patch.token = response.data;
+          LocalStorage.set('token', response.data);
+          auth.$patch.token = response.data;
         });
     } catch (error) {
       console.log(error);

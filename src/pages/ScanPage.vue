@@ -1,12 +1,7 @@
 <template>
   <q-page class="row">
-    <div class="col-8 flex flex-center">
-      <q-btn
-          size="md"
-          color="primary"
-          label="Sign in"
-          @click="this.$router.push('/signin')"
-      />
+    <div class="col-8 view-height">
+      <q-img src="src/assets/images/illustration_dashboard.png" />
     </div>
     <div class="col-4 view-height">
       <div class="row">

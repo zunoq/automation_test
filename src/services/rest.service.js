@@ -1,9 +1,9 @@
 import { api } from 'boot/axios';
-import UserService from './user.service';
 import { LocalStorage, Notify } from 'quasar';
-
+import { useAuthStore } from 'stores/auth';
+const authStore = useAuthStore();
 function authHeader() {
-  var token = LocalStorage.getItem('token');
+  var token = authStore.token;
   if (token) {
     return {
       Authorization: 'Bearer ' + token.access,
@@ -39,10 +39,10 @@ class RESTService {
             position: 'top',
           });
           if (token) {
-            UserService.logout(token.refresh);
+            authStore.logout(token.refresh);
           } else {
-            UserService.logout();
-            window.location.href = '/login';
+            authStore.logout();
+            window.location.href = '/signin';
           }
         } else {
           if (error.response.status === 403) {
@@ -101,10 +101,10 @@ class RESTService {
           }
         } else {
           if (token) {
-            UserService.logout(token.refresh);
+            authStore.logout(token.refresh);
           } else {
-            UserService.logout();
-            window.location.href = '/login';
+            authStore.logout();
+            window.location.href = '/signin';
           }
         }
       }
@@ -131,10 +131,10 @@ class RESTService {
             position: 'top',
           });
           if (token) {
-            UserService.logout(token.refresh);
+            authStore.logout(token.refresh);
           } else {
-            UserService.logout();
-            window.location.href = '/login';
+            authStore.logout();
+            window.location.href = '/signin';
           }
         } else {
           if (error.response.status === 403) {
@@ -192,10 +192,10 @@ class RESTService {
           }
         } else {
           if (token) {
-            UserService.logout(token.refresh);
+            authStore.logout(token.refresh);
           } else {
-            UserService.logout();
-            window.location.href = '/login';
+            authStore.logout();
+            window.location.href = '/signin';
           }
         }
       }
@@ -222,10 +222,10 @@ class RESTService {
             position: 'top',
           });
           if (token) {
-            UserService.logout(token.refresh);
+            authStore.logout(token.refresh);
           } else {
-            UserService.logout();
-            window.location.href = '/login';
+            authStore.logout();
+            window.location.href = '/signin';
           }
         } else {
           if (error.response.status === 403) {
@@ -275,10 +275,10 @@ class RESTService {
           }
         } else {
           if (token) {
-            UserService.logout(token.refresh);
+            authStore.logout(token.refresh);
           } else {
-            UserService.logout();
-            window.location.href = '/login';
+            authStore.logout();
+            window.location.href = '/signin';
           }
         }
       }
@@ -305,10 +305,10 @@ class RESTService {
             position: 'top',
           });
           if (token) {
-            UserService.logout(token.refresh);
+            authStore.logout(token.refresh);
           } else {
-            UserService.logout();
-            window.location.href = '/login';
+            authStore.logout();
+            window.location.href = '/signin';
           }
         } else {
           if (error.response.status === 403) {
@@ -358,10 +358,10 @@ class RESTService {
           }
         } else {
           if (token) {
-            UserService.logout(token.refresh);
+            authStore.logout(token.refresh);
           } else {
-            UserService.logout();
-            window.location.href = '/login';
+            authStore.logout();
+            window.location.href = '/signin';
           }
         }
       }

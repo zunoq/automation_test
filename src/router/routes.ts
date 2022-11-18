@@ -1,25 +1,38 @@
-import {RouteRecordRaw} from 'vue-router';
+import { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
   {
-    redirect: '/signin',
-    path: '/',
+    redirect: '/',
+    path: '/e',
     component: () => import('layouts/EmptyLayout.vue'),
     children: [
       {
         path: '/signin',
-        component: () => import('pages/SignIn.vue')
+        component: () => import('pages/SignIn.vue'),
       },
       {
         path: '/signup',
-        component: () => import('pages/SignUp.vue')
+        component: () => import('pages/SignUp.vue'),
       },
-    ]
+      {
+        path: '/',
+        component: () => import('pages/LandingPage.vue'),
+      },
+    ],
   },
   {
     path: '/m',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{path: '/dashboard', component: () => import('pages/DashboardPage.vue')}],
+    children: [
+      {
+        path: '/dashboard',
+        component: () => import('pages/DashboardPage.vue'),
+      },
+      {
+        path: '/scan',
+        component: () => import('pages/ScanPage.vue'),
+      },
+    ],
   },
 
   // Always leave this as last one,

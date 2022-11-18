@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed,ref } from 'vue';
+import { computed, ref } from 'vue';
 import { Todo, Meta } from './models';
 
 interface Props {
@@ -33,5 +33,4 @@ function increment() {
 }
 
 const todoCount = computed(() => props.todos.length);
-
 </script>

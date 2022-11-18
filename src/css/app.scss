@@ -1,45 +1,69 @@
 // app global css in SCSS form
-@font-face {
-  font-family: "Public Sans";
-  src: url(../assets/font/Public_Sans/PublicSans-Regular.ttf);
+::-webkit-scrollbar {
+  display: none;
 }
 @font-face {
-  font-family: "Public Sans Bold";
+  font-family: 'Public Sans Extra Bold';
+  src: url(../assets/font/Public_Sans/PublicSans-ExtraBold.ttf);
+}
+@font-face {
+  font-family: 'Public Sans Bold';
   src: url(../assets/font/Public_Sans/PublicSans-Bold.ttf);
 }
 @font-face {
-  font-family: "Public Sans Italic";
-  src: url(../assets/font/Public_Sans/PublicSans-Italic.ttf);
+  font-family: 'Public Sans Semi Bold';
+  src: url(../assets/font/Public_Sans/PublicSans-SemiBold.ttf);
 }
 @font-face {
-  font-family: "Public Sans Thin";
+  font-family: 'Public Sans Medium';
+  src: url(../assets/font/Public_Sans/PublicSans-Medium.ttf);
+}
+@font-face {
+  font-family: 'Public Sans Regular';
+  src: url(../assets/font/Public_Sans/PublicSans-Regular.ttf);
+}
+@font-face {
+  font-family: 'Public Sans Light';
+  src: url(../assets/font/Public_Sans/PublicSans-Light.ttf);
+}
+@font-face {
+  font-family: 'Public Sans Extra Light';
+  src: url(../assets/font/Public_Sans/PublicSans-ExtraLight.ttf);
+}
+@font-face {
+  font-family: 'Public Sans Thin';
   src: url(../assets/font/Public_Sans/PublicSans-Thin.ttf);
 }
 @font-face {
-  font-family: "Public Sans Bold Italic";
+  font-family: 'Public Sans Italic';
+  src: url(../assets/font/Public_Sans/PublicSans-Italic.ttf);
+}
+
+@font-face {
+  font-family: 'Public Sans Bold Italic';
   src: url(../assets/font/Public_Sans/PublicSans-BoldItalic.ttf);
 }
 @font-face {
-  font-family: "Public Sans Thin Italic";
+  font-family: 'Public Sans Thin Italic';
   src: url(../assets/font/Public_Sans/PublicSans-ThinItalic.ttf);
 }
 .text-regular {
-  font-family: "Public Sans", serif;
+  font-family: 'Public Sans', serif;
 }
 .text-bold {
-  font-family: "Public Sans Bold", serif;
+  font-family: 'Public Sans Bold', serif;
 }
 .text-thin {
-  font-family: "Public Sans Thin", serif;
+  font-family: 'Public Sans Thin', serif;
 }
 .text-italic {
-  font-family: "Public Sans Italic", serif;
+  font-family: 'Public Sans Italic', serif;
 }
 .text-bold-italic {
-  font-family: "Public Sans Bold Italic", serif;
+  font-family: 'Public Sans Bold Italic', serif;
 }
 .text-thin-italic {
-  font-family: "Public Sans Thin Italic", serif;
+  font-family: 'Public Sans Thin Italic', serif;
 }
 .radius-xs {
   border-radius: 4px;
@@ -57,112 +81,87 @@
   border-radius: 16px;
 }
 .text-dark {
-  color: $dark !important;
+  color: $dark;
 }
 .text-light-primary {
-  color: #212B36 !important;
+  color: $light-primary;
 }
 .text-light-secondary {
-  color: #637381 !important;
+  color: $light-secondary;
 }
 .text-light-disable {
-  color: #919EAB !important;
+  color: $light-disable;
 }
 .h1 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Extra Bold', sans-serif;
   font-style: normal;
-  font-weight: 800;
   font-size: 64px;
   line-height: 80px;
-  color: #000000;
 }
-.h2{
-  font-family: 'Public Sans', sans-serif;
+.h2 {
+  font-family: 'Public Sans Extra Bold', sans-serif;
   font-style: normal;
-  font-weight: 800;
   font-size: 48px;
   line-height: 64px;
-  color: #000000;
 }
 .h3 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
-  font-weight: 700;
   font-size: 32px;
   line-height: 48px;
-  color: #000000;
 }
 .h4 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
-  font-weight: 700;
   font-size: 24px;
   line-height: 36px;
-  color: #000000;
 }
 .h5 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
-  font-weight: 700;
   font-size: 20px;
   line-height: 30px;
-  color: #000000;
 }
 .h6 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
-  font-weight: 700;
   font-size: 18px;
   line-height: 28px;
-  color: #000000;
 }
 .subtitle1 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Semi Bold', sans-serif;
   font-style: normal;
-  font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  color: #000000;
 }
 .subtitle2 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Semi Bold', sans-serif;
   font-style: normal;
-  font-weight: 600;
   font-size: 14px;
-
   line-height: 22px;
-  color: #000000;
 }
 .body1 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Regular', sans-serif;
   font-style: normal;
-  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #000000;
 }
 .body2 {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Regular', sans-serif;
   font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  color: #000000;
 }
 .caption {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Regular', sans-serif;
   font-style: normal;
-  font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-  color: #000000;
 }
 .overline {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
-  font-weight: 700;
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
-  color: #000000;
 }
