@@ -7,17 +7,34 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/EmptyLayout.vue'),
     children: [
       {
-        path: '/signin',
-        component: () => import('pages/SignIn.vue'),
+        path: '/login',
+        component: () => import('pages/auth/LoginPage.vue'),
       },
       {
-        path: '/signup',
-        component: () => import('pages/SignUp.vue'),
+        path: '/register',
+        component: () => import('pages/auth/RegisterPage.vue'),
+      },
+      {
+        path: '/verify',
+        component: () => import('pages/auth/VerifyPage.vue'),
+      },
+      {
+        path: '/forgot-password',
+        component: () => import('pages/auth/ForgotPassword.vue'),
       },
       {
         path: '/',
         component: () => import('pages/LandingPage.vue'),
       },
+      {
+        path: '/system-error',
+        component: () => import('pages/error/ErrorInternalServer.vue'),
+      },
+      {
+        path: '/no-permission',
+        component: () => import('pages/error/ErrorNoPermission.vue'),
+      },
+
     ],
   },
   {
@@ -39,7 +56,7 @@ const routes: RouteRecordRaw[] = [
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue'),
+    component: () => import('pages/error/ErrorNotFound.vue'),
   },
 ];
 

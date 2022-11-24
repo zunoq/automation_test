@@ -42,7 +42,7 @@ class RESTService {
             authStore.logout(token.refresh);
           } else {
             authStore.logout();
-            window.location.href = '/signin';
+            window.location.href = '/login';
           }
         } else {
           if (error.response.status === 403) {
@@ -104,7 +104,7 @@ class RESTService {
             authStore.logout(token.refresh);
           } else {
             authStore.logout();
-            window.location.href = '/signin';
+            window.location.href = '/login';
           }
         }
       }
@@ -134,7 +134,7 @@ class RESTService {
             authStore.logout(token.refresh);
           } else {
             authStore.logout();
-            window.location.href = '/signin';
+            window.location.href = '/login';
           }
         } else {
           if (error.response.status === 403) {
@@ -195,7 +195,7 @@ class RESTService {
             authStore.logout(token.refresh);
           } else {
             authStore.logout();
-            window.location.href = '/signin';
+            window.location.href = '/login';
           }
         }
       }
@@ -225,7 +225,7 @@ class RESTService {
             authStore.logout(token.refresh);
           } else {
             authStore.logout();
-            window.location.href = '/signin';
+            window.location.href = '/login';
           }
         } else {
           if (error.response.status === 403) {
@@ -278,7 +278,7 @@ class RESTService {
             authStore.logout(token.refresh);
           } else {
             authStore.logout();
-            window.location.href = '/signin';
+            window.location.href = '/login';
           }
         }
       }
@@ -308,7 +308,7 @@ class RESTService {
             authStore.logout(token.refresh);
           } else {
             authStore.logout();
-            window.location.href = '/signin';
+            window.location.href = '/login';
           }
         } else {
           if (error.response.status === 403) {
@@ -317,6 +317,7 @@ class RESTService {
               color: 'negative',
               position: 'top',
             });
+            window.location.href = '/no-permission';
           } else {
             if (error.response.status >= 500) {
               Notify.create({
@@ -361,7 +362,7 @@ class RESTService {
             authStore.logout(token.refresh);
           } else {
             authStore.logout();
-            window.location.href = '/signin';
+            window.location.href = '/login';
           }
         }
       }

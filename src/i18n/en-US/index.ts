@@ -6,5 +6,9 @@ export default {
   success: 'Action was successful',
   login: {
     login: 'Login to use VAP'
+  },
+  register: {
+    signup: 'Sign up',
+
   }
 };

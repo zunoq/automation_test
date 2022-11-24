@@ -24,7 +24,7 @@
             </q-list>
           </q-menu>
         </q-btn>
-        <q-btn class="q-ml-md" color="grey-9" flat icon="notifications" round/>
+        <q-btn class="q-ml-md" color="grey-9" flat icon="r_notifications" round/>
         <q-btn class="q-ml-md" flat round>
           <q-avatar>
             <img alt="avatar" src="../assets/images/avatar.jpg"/>
@@ -142,17 +142,17 @@ const drawer = reactive([
     group: 'general',
     page: [
       {
-        icon: 'dashboard',
+        icon: 'r_dashboard',
         name: 'Dashboard',
         direct: '/dashboard',
       },
       {
-        icon: 'track_changes',
+        icon: 'r_track_changes',
         name: 'Scan',
         direct: '/scan',
       },
       {
-        icon: 'workspaces',
+        icon: 'r_workspaces',
         name: 'Target Groups',
         direct: '/targetGroups',
       },
@@ -162,17 +162,17 @@ const drawer = reactive([
     group: 'Attack',
     page: [
       {
-        icon: 'brightness_auto',
+        icon: 'r_brightness_auto',
         name: 'Auto Attack',
         direct: '/attack',
       },
       {
-        icon: 'looks_one',
+        icon: 'r_looks_one',
         name: 'Single Attack',
         direct: '/singleAttack',
       },
       {
-        icon: 'hdr_strong',
+        icon: 'r_hdr_strong',
         name: 'Advanced Attack',
         direct: '/advancedAttack',
       },
@@ -182,27 +182,27 @@ const drawer = reactive([
     group: 'Manage',
     page: [
       {
-        icon: 'account_box',
+        icon: 'r_account_box',
         name: 'User',
         direct: '/user',
       },
       {
-        icon: 'group',
+        icon: 'r_group',
         name: 'User Groups',
         direct: '/userGroup',
       },
       {
-        icon: 'local_police',
+        icon: 'r_local_police',
         name: 'Security',
         direct: '/security',
       },
       {
-        icon: 'data_object',
+        icon: 'r_data_object',
         name: 'Parameter',
         direct: '/parameter',
       },
       {
-        icon: 'more',
+        icon: 'r_more',
         name: 'About',
         direct: '/about',
       },
@@ -213,22 +213,22 @@ const menu = reactive([
   {
     name: 'Profile',
     direct: '/profile',
-    icon: 'person'
+    icon: 'r_person'
   },
   {
     name: 'Settings',
     direct: '/settings',
-    icon: 'person'
+    icon: 'r_settings'
   },
   {
     name: 'Help & Feedback',
     direct: '/help_and_feedback',
-    icon: 'person'
+    icon: 'r_live_help'
   },
   {
     name: 'Sign out',
     direct: '/signin',
-    icon: 'r_person'
+    icon: 'r_logout'
   }
 ]);
 const {locale} = useI18n({useScope: 'global'});

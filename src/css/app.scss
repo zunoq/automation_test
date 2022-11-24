@@ -3,34 +3,42 @@
   display: none;
 }
 @font-face {
+  //800
   font-family: 'Public Sans Extra Bold';
   src: url(../assets/font/Public_Sans/PublicSans-ExtraBold.ttf);
 }
 @font-face {
+  //700
   font-family: 'Public Sans Bold';
   src: url(../assets/font/Public_Sans/PublicSans-Bold.ttf);
 }
 @font-face {
+  //600
   font-family: 'Public Sans Semi Bold';
   src: url(../assets/font/Public_Sans/PublicSans-SemiBold.ttf);
 }
 @font-face {
+  //500
   font-family: 'Public Sans Medium';
   src: url(../assets/font/Public_Sans/PublicSans-Medium.ttf);
 }
 @font-face {
+  //400
   font-family: 'Public Sans Regular';
   src: url(../assets/font/Public_Sans/PublicSans-Regular.ttf);
 }
 @font-face {
+  //300
   font-family: 'Public Sans Light';
   src: url(../assets/font/Public_Sans/PublicSans-Light.ttf);
 }
 @font-face {
+  //200
   font-family: 'Public Sans Extra Light';
   src: url(../assets/font/Public_Sans/PublicSans-ExtraLight.ttf);
 }
 @font-face {
+  //100
   font-family: 'Public Sans Thin';
   src: url(../assets/font/Public_Sans/PublicSans-Thin.ttf);
 }
@@ -164,4 +172,17 @@
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
+}
+.underline {
+  text-decoration: underline;
+}
+.underline-hover:hover {
+  text-decoration: underline;
+}
+.overlay {
+  background: url('src/assets/images/overlay_2.png') ;
+  background-size: cover;
+}
+.blur {
+  background-color: rgba(255, 255, 255, 0.85);
 }

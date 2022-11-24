@@ -5,7 +5,7 @@
           size="md"
           color="primary"
           label="Sign in"
-          @click="this.$router.push('/signin')"
+          @click="this.$router.push('/login')"
       />
     </div>
     <div class="col-4 view-height">

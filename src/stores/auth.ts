@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia';
 import {api} from 'boot/axios';
-import {LocalStorage} from 'quasar';
+import {LocalStorage, Notify} from 'quasar';
 
 interface Self {
   first_name: string;
@@ -31,9 +31,16 @@ export const useAuthStore = defineStore('auth', {
       if (this.token) {
         window.location.href = '/dashboard';
       }
+      else {
+        Notify.create({
+          message: 'Invalid username or password',
+          color: 'negative',
+          position: 'top-right'
+        })
+      }
     },
     logout() {
-      window.location.href = '/signin';
+      window.location.href = '/login';
       LocalStorage.remove('token');
       LocalStorage.remove('perm');
     },

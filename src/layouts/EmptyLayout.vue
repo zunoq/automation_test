@@ -1,33 +1,29 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header :reveal-offset="250" class="bg-transparent text-dark" reveal>
-      <q-toolbar style="height: 64px; padding: 0 40px">
-        <q-space/>
-        <q-btn class="q-ml-md q-pa-none radius-xs" flat size="sm">
-          <img :src="require(`src/assets/images/${locale}.png`)" class="radius-xs"/>
-          <q-menu>
-            <q-list>
+      <q-btn class=" q-pa-sm btn-lang" round flat size="sm">
+        <img alt="img" :src="require(`src/assets/images/${locale}.png`)" class="radius-xs"/>
+        <q-menu>
+          <q-list>
 
-              <q-item
-                v-for="(item,idx) in language"
-                :key="idx"
-                v-close-popup
-                class="radius-sm"
-                clickable
-                @click="$i18n.locale = item.name"
-              >
-                <q-item-section avatar>
-                  <img :src="require(`src/assets/images/${item.name}.png`)" class="radius-xs"/>
-                </q-item-section>
-                <q-item-section>{{ item.label }}</q-item-section>
-              </q-item>
-            </q-list>
-          </q-menu>
-        </q-btn>
-      </q-toolbar>
-    </q-header>
-    <q-page-container>
-      <router-view class="text-page"/>
+            <q-item
+              v-for="(item,idx) in language"
+              :key="idx"
+              v-close-popup
+              class="radius-sm"
+              clickable
+              @click="$i18n.locale = item.name"
+            >
+              <q-item-section avatar>
+                <img alt="img" :src="require(`src/assets/images/${item.name}.png`)" class="radius-xs"/>
+              </q-item-section>
+              <q-item-section>{{ item.label }}</q-item-section>
+            </q-item>
+          </q-list>
+        </q-menu>
+      </q-btn>
+    <q-page-container >
+
+      <router-view class="text-page "/>
     </q-page-container>
   </q-layout>
 </template>
@@ -66,3 +62,11 @@ onMounted(() => {
   getLocale()
 })
 </script>
+<style>
+.btn-lang {
+  position:absolute;
+  z-index:1;
+  top: 8px;
+  right: 48px;
+}
+</style>

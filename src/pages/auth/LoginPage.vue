@@ -1,21 +1,18 @@
 <template>
-  <q-page class="row q-pa-lg">
-    <div class="col-9 flex flex-center">
-      <img alt="images" src="../assets/images/illustration_dashboard.png" />
+  <q-page class="row overlay">
+    <div class="col-9 flex flex-center blur">
+      <img alt="images" src="../../assets/images/signin_background.png"/>
     </div>
-    <div class="col-3 flex flex-center">
+    <div class="col-3 flex flex-center bg-white">
       <div class="row q-pa-xl">
-        <div class="col-12 h4 text-light-primary">{{$t('login.login')}}</div>
+        <div class="col-12 h4 text-light-primary">{{ $t('login.login') }}</div>
         <div class="col-12 q-my-lg subtitle2 text-light-primary">
           New user?
-          <q-btn
-            class="q-pa-none text-weight-bold"
-            color="primary"
-            flat
-            label="Create an account"
-            no-caps
-            @click="this.$router.push('/signup')"
-          />
+          <span class="subtitle2 text-primary cursor-pointer underline-hover"
+                @click="this.$router.push('/register')"
+          >
+            Create an account
+          </span>
         </div>
 
         <q-form class="full-width" @submit="login()">
@@ -38,7 +35,7 @@
             >
               <template v-slot:append>
                 <q-icon
-                  :name="showPassword ? 'visibility_off' : 'visibility'"
+                  :name="showPassword ? 'r_visibility_off' : 'r_visibility'"
                   class="cursor-pointer"
                   color="text-light-secondary"
                   @click="showPassword = !showPassword"
@@ -52,18 +49,18 @@
               flat
               label="Forgot password?"
               no-caps
-              @click="this.$router.push('/signin')"
+              @click="this.$router.push('/forgot-password')"
             />
           </div>
           <div class="col-12">
             <q-btn
-              class="subtitle1 full-width radius-md"
-              type="submit"
+              class="subtitle1 full-width radius-md btn-signin"
               color="dark"
               dark
               label="Sign in"
               no-caps
               padding="sm"
+              type="submit"
             />
           </div>
         </q-form>
@@ -73,15 +70,16 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
-import { Notify } from 'quasar';
+import {reactive, ref} from 'vue';
+import {Notify} from 'quasar';
 // import Services from "src/services/user.service"
-import {useAuthStore} from'stores/auth'
+import {useAuthStore} from 'stores/auth'
 
 interface Account {
   email: string;
   password: string;
 }
+
 const authStore = useAuthStore()
 let showPassword = ref(false);
 // let loading = ref(false);
@@ -89,8 +87,6 @@ const account: Account = reactive({
   email: '',
   password: '',
 });
-
-
 
 
 async function login() {
@@ -110,10 +106,14 @@ async function login() {
     });
   } else {
     let response = authStore.login(account);
-    console.log(response);
+   await console.log(response);
   }
 }
 
 
-
 </script>
+<style lang="scss" scoped>
+.btn-signin {
+  height: 48px;
+}
+</style>
