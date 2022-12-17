@@ -31,6 +31,10 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/error/ErrorInternalServer.vue'),
       },
       {
+        path: '/network-error',
+        component: () => import('pages/error/ErrorNetwork.vue'),
+      },
+      {
         path: '/no-permission',
         component: () => import('pages/error/ErrorNoPermission.vue'),
       },
@@ -47,7 +51,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: '/scan',
-        component: () => import('pages/ScanPage.vue'),
+        component: () => import('pages/scan/ScanPage.vue'),
       },
     ],
   },

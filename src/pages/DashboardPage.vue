@@ -1,12 +1,25 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <div class="col-4">
-      <pie-chart/>
+  <q-page class="container q-pa-lg">
+    <div class="row q-col-gutter-lg">
+      <div class="col-12">
+        <vulns-statistics />
+      </div>
+      <div class="col-8">
+        <scan-count />
+      </div>
+      <div class="col-4">
+        <vulns-count />
+      </div>
     </div>
+
   </q-page>
 </template>
 
 <script lang="ts" setup>
-import PieChart from 'src/components/PieChart.vue'
-
+import VulnsStatistics from 'src/components/dashboard/VulnsStatistics.vue'
+import ScanCount from 'src/components/dashboard/ScanCount.vue'
+import VulnsCount from 'src/components/dashboard/VulnsCount.vue'
 </script>
+<style>
+
+</style>

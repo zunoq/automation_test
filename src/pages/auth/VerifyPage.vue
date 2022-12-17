@@ -52,7 +52,7 @@ import OTP from 'components/OTP.vue'
 
 const registerMail = ref('admin@admin.com')
 
-function logChange(val) {
+function logChange(val = []) {
   console.log(val.join(''))
 }
 

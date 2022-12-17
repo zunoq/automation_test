@@ -1,13 +1,16 @@
 <template>
-  <q-layout view="lHh lpR fFf">
-    <q-header :reveal-offset="250" class="bg-transparent text-dark" reveal>
-      <q-toolbar style="height: 64px; padding: 0 40px">
+  <q-layout view="lhh Lpr lff">
+    <q-header :reveal-offset="250" class="bg-transparent text-dark">
+      <q-toolbar style="height: 88px; padding: 0 40px">
         <q-space/>
         <q-btn class="q-ml-md q-pa-none radius-xs" flat size="sm">
-          <img :src="require(`src/assets/images/${locale}.png`)" class="radius-xs"/>
-          <q-menu>
-            <q-list>
-
+          <img :src="require(`src/assets/images/${locale}.png`)" alt="locale" class="radius-xs"/>
+          <q-menu anchor="bottom middle"
+                  self="top middle"
+                  transition-hide="flip-left"
+                  transition-show="flip-right"
+          >
+            <q-list class="radius-sm">
               <q-item
                 v-for="(item,idx) in language"
                 :key="idx"
@@ -17,9 +20,9 @@
                 @click="$i18n.locale = item.name"
               >
                 <q-item-section avatar>
-                  <img :src="require(`src/assets/images/${item.name}.png`)" class="radius-xs"/>
+                  <img :alt="item.label" :src="require(`src/assets/images/${item.name}.png`)" class="radius-xs"/>
                 </q-item-section>
-                <q-item-section>{{ item.label }}</q-item-section>
+                <q-item-section class="body2 text-light-primary">{{ item.label }}</q-item-section>
               </q-item>
             </q-list>
           </q-menu>
@@ -65,14 +68,14 @@
       class="q-px-md"
       show-if-above
       side="left"
-      style="width: 280px; border-right: 1px dashed #ddd"
+      style="width: 280px; border-right: 1px dashed #919EAB"
     >
       <!-- drawer content -->
       <div class="q-my-md">
         <q-img
           :ratio="1"
           fit="contain"
-          height="32px"
+          height="56px"
           no-spinner
           src="../assets/images/logo.png"
         />
@@ -107,8 +110,8 @@
             :key="page.name"
             v-ripple
             :to="page.direct"
-            active-class="subtitle2 text-weight-bold active-item"
-            class="radius-md text-light-secondary"
+            active-class="subtitle2 active-item"
+            class="radius-md body2 text-light-secondary"
             clickable
           >
             <div class="row q-col-gutter-md">
@@ -227,7 +230,7 @@ const menu = reactive([
   },
   {
     name: 'Sign out',
-    direct: '/signin',
+    direct: '/login',
     icon: 'r_logout'
   }
 ]);
@@ -243,10 +246,12 @@ const language = [
   }
 ];
 const lang = LocalStorage.getItem('lang')
+
 async function getSelf() {
   authStore.self = await Services.get('/api/v1/private/self/info')
 
 }
+
 function getLocale() {
   if (lang == null) {
     LocalStorage.set('lang', 'en-US');

@@ -186,3 +186,40 @@
 .blur {
   background-color: rgba(255, 255, 255, 0.85);
 }
+.bg-light {
+  background-color: $background-light !important;
+}
+.bg-critical {
+  background-color: $critical !important;
+}
+.text-critical {
+  color: $critical !important;
+}
+.bg-high {
+  background-color: $high !important;
+}
+.text-high {
+  color: $high !important;
+}
+.bg-medium {
+  background-color: $medium !important;
+}
+.text-medium {
+  color: $medium !important;
+}
+.bg-low {
+  background-color: $low !important;
+}
+.text-low {
+  color: $low !important;
+}
+.bg-info {
+  background-color: $info !important;
+}
+.text-info {
+  color: $info !important;
+}
+.q-card {
+  border-radius: 16px;
+  box-shadow: 0 0 2px rgba(145, 158, 171, 0.2), 0 12px 24px -4px rgba(145, 158, 171, 0.12);
+}

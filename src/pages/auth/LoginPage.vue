@@ -54,6 +54,7 @@
           </div>
           <div class="col-12">
             <q-btn
+              :loading="loading"
               class="subtitle1 full-width radius-md btn-signin"
               color="dark"
               dark
@@ -81,6 +82,7 @@ interface Account {
 }
 
 const authStore = useAuthStore()
+const loading = ref(false);
 let showPassword = ref(false);
 // let loading = ref(false);
 const account: Account = reactive({
@@ -90,23 +92,35 @@ const account: Account = reactive({
 
 
 async function login() {
-  if (!account.email) {
+  loading.value = true;
+  try {
+    if (!account.email) {
+      Notify.create({
+        message: 'Please enter username',
+        color: 'negative',
+        icon: 'r_warning',
+        position: 'top-right',
+      });
+    } else if (!account.password) {
+      Notify.create({
+        message: 'Please enter password',
+        color: 'negative',
+        icon: 'r_warning',
+
+      });
+    } else {
+      await authStore.login(account);
+    }
+  } catch (error) {
+    loading.value = false
+    account.email = ''
+    account.password = ''
     Notify.create({
-      message: 'Please enter username',
+      message: 'Invalid username or password',
       color: 'negative',
-      icon: 'warning',
-      position: 'top-right',
-    });
-  } else if (!account.password) {
-    Notify.create({
-      message: 'Please enter password',
-      color: 'negative',
-      icon: 'warning',
+      icon: 'r_warning',
 
     });
-  } else {
-    let response = authStore.login(account);
-   await console.log(response);
   }
 }
 

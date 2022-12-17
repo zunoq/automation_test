@@ -12,26 +12,67 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary: #00ab55;
+
 $primary-lighter: #C8FACD;
 $primary-light: #5BE584;
+$primary: #00ab55;
 $primary-dark: #007B55;
 $primary-darker: #005249;
-$secondary: #3366ff;
+$primary-gradient: linear-gradient(135deg, #5BE584 0%, #00AB55 100%);
+
+
 $secondary-lighter: #D6E4FF;
 $secondary-light: #84A9FF;
+$secondary: #3366ff;
 $secondary-dark: #1939B7;
 $secondary-darker: #091A7A;
-$accent: #9c27b0;
+$secondary-gradient: linear-gradient(135deg, #84A9FF 0%, #1939B7 100%);
+$accent: #F74769;
 
 $dark: #212b36;
 $dark-page: #121212;
+$background-light: #F9FAFB;
 
+$positive-lighter: #D8FBDE;
+$positive-light: #86E8AB;
 $positive: #36b37e;
-$negative: #ff5630;
-$info: #00b8d9;
-$warning: #ffab00;
+$positive-dark: #1B806A;
+$positive-darker: #0A5554;
+$positive-gradient:linear-gradient(135deg, #86E8AB 0%, #36B37E 100%);
+
+$negative-lighter: #FFE9D5;
+$negative-light: #FFAC82;
+$negative: #FF5630;
+$negative-dark: #B71D18;
+$negative-darker: #7A0916;
+$negative-gradient: linear-gradient(135deg, #FFAC82 0%, #FF5630 100%);
+
+$info-lighter: #CAFDF5;
+$info-light: #61F3F3;
+$info: #00B8D9;
+$info-dark: #006C9C;
+$info-darker: #003768;
+$info-gradient:linear-gradient(135deg, #61F3F3 0%, #00B8D9 100%);
+
+
+$warning-lighter: #FFF5CC;
+$warning-light: #FFD666;
+$warning: #FFAB00;
+$warning-dark: #B76E00;
+$warning-darker: #7A4100;
+$warning-gradient: linear-gradient(135deg, #FFD666 0%, #FFAB00 100%);
+
+$critical: $negative;
+$high: $warning;
+$medium: #FFD100;
+$low: $positive;
 
 $light-primary: #212b36;
 $light-secondary: #637381;
 $light-disable: #919eab;
+
+$all: $secondary;
+$finished: $positive;
+$scanning: $info;
+$waiting: $warning;
+$failed: $negative;

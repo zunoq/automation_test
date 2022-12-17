@@ -302,7 +302,6 @@ class RESTService {
           Notify.create({
             message: 'Chưa đang nhập vào hệ thống',
             color: 'negative',
-            position: 'top',
           });
           if (token) {
             authStore.logout(token.refresh);

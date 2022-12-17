@@ -4,7 +4,6 @@ Notify.setDefaults({
   position: 'top-right',
   timeout: 2500,
   textColor: 'white',
-  actions: [{ icon: 'r_close', color: 'white' }],
 });
 // "async" is optional;
 // more info on params: https://v2.quasar.dev/quasar-cli/boot-files

@@ -13,6 +13,8 @@ interface Self {
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
+    email: '' as string,
+    password: '' as string,
     token: LocalStorage.getItem('token'),
     self: {} as Self,
   }),
@@ -30,8 +32,7 @@ export const useAuthStore = defineStore('auth', {
       await LocalStorage.set('token', response.data);
       if (this.token) {
         window.location.href = '/dashboard';
-      }
-      else {
+      } else {
         Notify.create({
           message: 'Invalid username or password',
           color: 'negative',

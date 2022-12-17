@@ -18,7 +18,6 @@
   </form>
 </template>
 <script lang="ts" setup>
-import {defineEmits} from 'vue'
 let code: string[] = Array(6);
 let dataFromPaste: string[] | undefined;
 const keysAllowed: string[] = [
