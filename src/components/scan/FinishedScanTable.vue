@@ -39,9 +39,14 @@
                     ...
                   </span>
           </q-td>
-          <q-td key="start_time" auto-width>
+          <q-td key="time_started" auto-width>
                   <span class="body2">
                     {{ $dateConvert(props.row.time_started) }}
+                  </span>
+          </q-td>
+          <q-td key="time_finished" auto-width>
+                  <span class="body2">
+                    {{ $dateConvert(props.row.time_finished) }}
                   </span>
           </q-td>
           <q-td key="type" auto-width>
@@ -49,22 +54,9 @@
                     {{ props.row.type }}
                   </span>
           </q-td>
-          <q-td key="status" auto-width class="">
-            <div class="row justify-center">
-            <q-chip
-              :color=" props.row.status"
-              text-color="white"
-              square
-              class="col-auto"
-            >
-            <span class="body2 text-capitalize">
-                    {{ props.row.status }}
-                  </span>
-            </q-chip>
-            </div>
-          </q-td>
           <q-td key="action" auto-width>
             <div class="float-right">
+
               <q-btn
                 class="q-mx-sm"
                 color="negative"
@@ -84,20 +76,13 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, reactive} from 'vue'
+import {onMounted, reactive,Ref, ref} from 'vue'
 import Services from 'src/services/rest.service'
-import {ScanRs} from 'src/models/statistic';
-import {Job} from 'src/models/scanner'
 import {QTableProps} from 'quasar';
-interface Row {
-  group_name: string;
-  websites: string[];
-  time_started: string;
-  type: string;
-  status: string;
-}
+import {ScanRS} from 'src/models/scan_result';
+
 const emit = defineEmits(['count'])
-const rows: Row[] = reactive([])
+let rows: Ref<ScanRS[]>  = reactive(ref([]))
 const columns: QTableProps['columns'] = [
   {
     name: 'group_name',
@@ -124,6 +109,14 @@ const columns: QTableProps['columns'] = [
     sortable: true,
   },
   {
+    name: 'time_finished',
+    required: true,
+    align: 'left',
+    label: 'Time finished',
+    field: (row) => row.time_finished,
+    sortable: true,
+  },
+  {
     name: 'type',
     required: true,
     align: 'left',
@@ -132,61 +125,21 @@ const columns: QTableProps['columns'] = [
     sortable: true,
   },
   {
-    name: 'status',
-    required: true,
-    align: 'center',
-    label: 'Status',
-    field: (row) => row.status,
-    sortable: true,
-  },
-  {
     name: 'action',
     required: true,
     label: '',
-    align: 'center',
+    align: 'left',
     field: (row) => row,
     sortable: false,
   },
 ];
 const getScan = async function () {
   let finished = await Services.get(
-    '/api/v1/public/scan/results'
-  );
-  await finished.scans_rs.reverse().forEach((item: ScanRs) => {
-    rows.push(
-      {
-        group_name: item.group_name,
-        websites: item.websites,
-        time_started: item.time_started,
-        type: item.type,
-        status: item.status
-      }
-    )
-  })
-  let scheduled = await Services.get('/api/v1/public/scheduled/jobs');
-  await scheduled.jobs.forEach((item: Job) => {
-    rows.push(
-      {
-        group_name: item.data.group_name,
-        websites: item.data.websites,
-        time_started: item.start_time,
-        type: item.data.type,
-        status: 'waiting'
-      }
-    )
-  })
-  let count:any = {
-    all: rows.length,
-    finished: 0,
-    scanning: 0,
-    waiting: 0,
-    failed:0
-  }
-  rows.forEach(function(v) {
-    count[v.status] = (count[v.status] || 0) + 1;
-  })
-  console.log(count)
-  emit('count', count)
+    '/api/v1/public/scan/results?result_status=finished'
+  )
+  // rows = await finished.scans_rs.reverse()
+  rows.value = [...finished.scans_rs.reverse()]
+  emit('count', rows.value.length)
 }
 onMounted(() => {
   getScan()

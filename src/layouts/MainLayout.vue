@@ -267,6 +267,9 @@ watch(locale, newLocale => {
 onMounted(() => {
   getSelf()
   getLocale()
+  setInterval(()=> {
+    authStore.refresh()
+  },1800000)
 
 });
 </script>
@@ -282,7 +285,6 @@ onMounted(() => {
   padding: 16px 20px;
   gap: 16px;
 }
-
 .active-item {
   background-color: #00ab5514;
   color: $primary !important;

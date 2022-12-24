@@ -10,12 +10,15 @@ interface Self {
   date_joined: string;
   id: string;
 }
-
+interface Token {
+  refresh: string,
+  access: string
+}
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     email: '' as string,
     password: '' as string,
-    token: LocalStorage.getItem('token'),
+    token: LocalStorage.getItem('token') as Token,
     self: {} as Self,
   }),
   actions: {
@@ -39,6 +42,14 @@ export const useAuthStore = defineStore('auth', {
           position: 'top-right'
         })
       }
+    },
+
+    async refresh() {
+      const response = await api.post('api/v1/private/token/refresh',{refresh: this.token.refresh})
+      this.token = response.data
+      await LocalStorage.set('token', response.data);
+      console.log(response.data)
+
     },
     logout() {
       window.location.href = '/login';

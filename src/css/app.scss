@@ -73,6 +73,15 @@
 .text-thin-italic {
   font-family: 'Public Sans Thin Italic', serif;
 }
+.q-card {
+  border-radius: 16px;
+  box-shadow: 0 0 2px rgba(145, 158, 171, 0.2), 0 12px 24px -4px rgba(145, 158, 171, 0.12);
+}
+
+
+.q-field--outlined .q-field__control::before {
+  border-radius: 8px;
+}
 .radius-xs {
   border-radius: 4px;
 }
@@ -219,7 +228,40 @@
 .text-info {
   color: $info !important;
 }
-.q-card {
-  border-radius: 16px;
-  box-shadow: 0 0 2px rgba(145, 158, 171, 0.2), 0 12px 24px -4px rgba(145, 158, 171, 0.12);
+.bg-all {
+  background-color: $all !important;
 }
+.text-all {
+  color: $all !important;
+}
+.bg-finished {
+  background-color: $finished !important;
+}
+.text-finished {
+  color: $finished !important;
+}
+.bg-scanning {
+  background-color: $scanning !important;
+}
+.text-scanning {
+  color: $scanning !important;
+}
+.bg-waiting {
+  background-color: $waiting !important;
+}
+.text-waiting {
+  color: $waiting !important;
+}
+.bg-failed {
+  background-color: $failed !important;
+}
+.text-failed {
+  color: $failed !important;
+}
+.bg-stopped {
+  background-color: $stopped !important;
+}
+.text-stopped {
+  color: $stopped !important;
+}
+

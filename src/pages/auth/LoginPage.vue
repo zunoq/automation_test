@@ -95,6 +95,7 @@ async function login() {
   loading.value = true;
   try {
     if (!account.email) {
+      loading.value = false
       Notify.create({
         message: 'Please enter username',
         color: 'negative',
@@ -102,6 +103,7 @@ async function login() {
         position: 'top-right',
       });
     } else if (!account.password) {
+      loading.value = false
       Notify.create({
         message: 'Please enter password',
         color: 'negative',

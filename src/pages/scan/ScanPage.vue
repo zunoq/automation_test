@@ -35,8 +35,8 @@
                 />
               </div>
               <div class="col-auto">
-                <div class="h6 text-light-secondary">Total scan</div>
-                <div class="h4 text-secondary">{{ count.allScan }}</div>
+                <div class="h6 text-light-primary">Total scan</div>
+                <div class="h4 text-secondary">{{ count.all }}</div>
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
               </div>
               <div class="col-auto">
                 <div class="h6 text-light-primary">Finished</div>
-                <div class="h4 text-positive">0</div>
+                <div class="h4 text-positive">{{ count.finished }}</div>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
               </div>
               <div class="col-auto">
                 <div class="h6 text-light-info">Scanning</div>
-                <div class="h4 text-info">0</div>
+                <div class="h4 text-info">{{ count.scanning }}</div>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@
               </div>
               <div class="col-auto">
                 <div class="h6 text-light-primary">Waiting</div>
-                <div class="h4 text-warning">0</div>
+                <div class="h4 text-warning">{{ count.waiting }}</div>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
               </div>
               <div class="col-auto flex items-center row">
                 <div class="col-12 h6 text-light-primary">Failed</div>
-                <div class="col-12 h4 text-negative">0</div>
+                <div class="col-12 h4 text-negative">{{ count.failed }}</div>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@
                 square
                 text-color="white"
               >
-                {{ count.allScan }}
+                {{ count.all }}
               </q-chip>
               <span class="subtitle2 text-light-primary q-px-xs">All</span>
             </q-tab>
@@ -143,7 +143,7 @@
                 square
                 text-color="white"
               >
-                {{ count.allScan }}
+                {{ count.finished }}
               </q-chip>
               <span class="subtitle2 text-light-primary q-px-xs">Finished</span>
             </q-tab>
@@ -155,7 +155,7 @@
                 square
                 text-color="white"
               >
-                0
+                {{ count.scanning }}
               </q-chip>
               <span class="subtitle2 text-light-primary q-px-xs">Scanning</span>
             </q-tab>
@@ -167,7 +167,7 @@
                 square
                 text-color="white"
               >
-                {{ count.allScan }}
+                {{ count.waiting }}
               </q-chip>
               <span class="subtitle2 text-light-primary q-px-xs">Waiting</span>
             </q-tab>
@@ -179,7 +179,7 @@
                 square
                 text-color="white"
               >
-                {{ count.allScan }}
+                {{ count.failed }}
               </q-chip>
               <span class="subtitle2 text-light-primary q-px-xs">Failed</span>
             </q-tab>
@@ -189,7 +189,10 @@
         <q-card-section>
           <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="all">
-              <AllScanTable @count="handleAllScan"/>
+              <AllScanTable @count="handleCount"/>
+            </q-tab-panel>
+            <q-tab-panel name="finished">
+              <FinishedScanTable/>
             </q-tab-panel>
             <q-tab-panel name="scanning">
               <ScanningTable/>
@@ -203,16 +206,19 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue'
+import {Ref, ref} from 'vue'
 import AllScanTable from 'components/scan/AllScanTable.vue'
 import ScanningTable from 'components/scan/ScanningTable.vue'
 import NewScan from 'components/scan/NewScan.vue'
 import {useQuasar} from 'quasar';
-
+import FinishedScanTable from 'components/scan/FinishedScanTable.vue'
 const tab = ref('all')
-const count = ref({
-  allScan: 0,
+const count:Ref = ref({
+  all: 0,
+  finished: 0,
   scanning: 0,
+  waiting: 0,
+  failed: 0
 
 })
 const $q = useQuasar()
@@ -228,9 +234,9 @@ const handleNewScan = function () {
     console.log('Called on OK or Cancel')
   })
 }
-const handleAllScan = function (e: number) {
-  count.value.allScan = e
-  console.log(e)
+const handleCount = function (e: object) {
+  count.value = e
+  console.log(count.value.all)
 }
 </script>
 <style lang="scss" scoped>
