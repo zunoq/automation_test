@@ -1,62 +1,53 @@
 <template>
   <div>
-    <q-table
-      :columns="columns"
-      :rows="rows"
-      flat
-      separator="none"
-    >
+    <q-table :columns="columns" :rows="rows" flat separator="none">
       <template #header="props">
         <q-tr :props="props">
           <q-th v-for="col in props.cols" :key="col.name" :props="props">
-                  <span class="text-light-secondary subtitle2">
-                    {{ col.label }}
-                  </span>
+            <span class="text-light-secondary subtitle2">
+              {{ col.label }}
+            </span>
           </q-th>
         </q-tr>
       </template>
       <template #body="props">
         <q-tr :props="props">
           <q-td key="group_name" auto-width>
-                  <span class="subtitle2 text-light-primary">
-                    {{ props.row.group_name }}
-                  </span>
+            <span class="subtitle2 text-light-primary">
+              {{ props.row.group_name }}
+            </span>
           </q-td>
           <q-td key="websites" auto-width>
-                  <span
-                    v-for="website in props.row.websites.length >= 4
-                      ? props.row.websites.slice(0, 3)
-                      : props.row.websites"
-                    :key="website.id"
-                    class="body2"
-                  >
-                    {{ website.url }} <br/>
-                  </span>
             <span
-              v-if="props.row.websites.length >= 4"
+              v-for="website in props.row.websites.length >= 4
+                ? props.row.websites.slice(0, 3)
+                : props.row.websites"
+              :key="website.id"
               class="body2"
             >
-                    ...
-                  </span>
+              {{ website.url }} <br />
+            </span>
+            <span v-if="props.row.websites.length >= 4" class="body2">
+              ...
+            </span>
           </q-td>
           <q-td key="time_started" auto-width>
-                  <span class="body2">
-                    {{ dateConvert(props.row.time_started) }}
-                  </span>
+            <span class="body2">
+              {{ dateConvert(props.row.time_started) }}
+            </span>
           </q-td>
           <q-td key="time_finished" auto-width>
-                  <span class="body2">
-                    {{ dateConvert(props.row.time_finished) }}
-                  </span>
+            <span class="body2">
+              {{ dateConvert(props.row.time_finished) }}
+            </span>
           </q-td>
           <q-td key="type" auto-width>
-                  <span class="body2 text-capitalize">
-                    {{ props.row.type }}
-                  </span>
+            <span class="body2 text-capitalize">
+              {{ props.row.type }}
+            </span>
           </q-td>
           <q-td key="action" auto-width>
             <div class="float-right">
-
               <q-btn
                 class="q-mx-sm"
                 color="negative"
@@ -76,13 +67,12 @@
 </template>
 
 <script lang="ts" setup>
-import {onMounted, reactive,Ref, ref} from 'vue'
-import Services from 'src/services/rest.service'
-import {QTableProps} from 'quasar';
-import {ScanRSTable} from 'src/models/scan_result';
-import {sort,dateConvert} from 'src/utils/fnc'
-const emit = defineEmits(['count'])
-let rows: Ref<ScanRSTable[]>  = reactive(ref([]))
+import { onMounted, reactive, Ref, ref } from 'vue';
+import Services from 'src/services/rest.service';
+import { QTableProps } from 'quasar';
+import { dateConvert } from 'src/utils/fnc';
+import { ScanRSTable } from 'src/models/scan_result';
+let rows: Ref<ScanRSTable[]> = reactive(ref([]));
 const columns: QTableProps['columns'] = [
   {
     name: 'group_name',
@@ -134,15 +124,13 @@ const columns: QTableProps['columns'] = [
   },
 ];
 const getScan = async function () {
-  let finished = await Services.get(
-    '/api/v1/public/scan/results?result_status=finished'
-  )
+  let failed = await Services.get(
+    '/api/v1/public/scan/results?result_status=failed'
+  );
   // rows = await finished.scans_rs.reverse()
-  rows.value = [...finished.scans_rs.sort(sort('time_started', 'desc'))]
-  emit('count', rows.value.length)
-}
+  rows.value = [...failed.scans_rs];
+};
 onMounted(() => {
-  getScan()
-
-})
+  getScan();
+});
 </script>

@@ -18,6 +18,7 @@
   </form>
 </template>
 <script lang="ts" setup>
+
 let code: string[] = Array(6);
 let dataFromPaste: string[] | undefined;
 const keysAllowed: string[] = [
@@ -62,13 +63,12 @@ function handleInput(event: Event) {
 }
 
 function handleDelete(event: Event) {
-  //keydown event = move to previous element then only delete number
+  console.log((event.target as HTMLInputElement))
   let value = (event.target as HTMLInputElement).value;
   let currentActiveElement = event.target as HTMLInputElement;
   if (!value)
     (currentActiveElement.previousElementSibling as HTMLElement)?.focus();
 }
-
 function onPaste(event: Event) {
   dataFromPaste = (event as ClipboardEvent).clipboardData
     ?.getData('text')

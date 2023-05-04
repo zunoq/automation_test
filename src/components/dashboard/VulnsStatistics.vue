@@ -1,6 +1,6 @@
 <template>
   <div class="row q-col-gutter-lg items-stretch">
-    <div v-for="(level, idx) in levels" :key="idx" class="col">
+    <div v-for="(level, index) in levels" :key="index" class="col">
       <q-card class="vulns-card radius-md shadow-1">
         <q-card-section class="row justify-between">
           <div class="col-auto">
@@ -38,7 +38,7 @@
                       {{ cve.name }}
                     </q-tooltip>
                     <div class="col-auto">
-                      {{ $splitString(cve.name, 25) }}
+                      {{ splitString(cve.name, 25) }}
                     </div>
                     <div class="col-auto text-weight-bold body1">
                       {{ cve.count }}
@@ -61,6 +61,7 @@
 <script lang="ts" setup>
 import {onMounted, ref} from 'vue';
 import {date} from 'quasar'
+import {splitString} from 'src/utils/fnc'
 import Services from 'src/services/rest.service'
 
 interface Cves {

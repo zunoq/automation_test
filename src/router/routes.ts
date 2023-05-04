@@ -53,6 +53,14 @@ const routes: RouteRecordRaw[] = [
         path: '/scan',
         component: () => import('pages/scan/ScanPage.vue'),
       },
+      {
+        path: '/scan/:groupResultID',
+        component: () => import('pages/scan/GroupResult.vue'),
+      },
+      {
+        path: '/scan/:groupResultID/:TargetResultID',
+        component: () => import('pages/scan/TargetResult.vue'),
+      },
     ],
   },
 

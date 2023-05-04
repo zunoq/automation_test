@@ -1,11 +1,15 @@
 <template>
-  <q-page class="q-pa-lg">
-    <div class="row q-mb-md justify-between">
+  <q-page class="px-xl pb-xl">
+    <div class="row  justify-between">
       <div class="col-auto">
         <div class="h4 text-light-primary q-mb-sm">Scan List</div>
-        <q-breadcrumbs active-color="light-disable" class="body2 text-light-primary" separator="-">
-          <q-breadcrumbs-el label="Scan" to="/"/>
-          <q-breadcrumbs-el label="List" to="/scan"/>
+        <q-breadcrumbs
+          active-color="light-disable"
+          class="body2 text-light-primary"
+          separator="-"
+        >
+          <q-breadcrumbs-el label="Scan" to="/" />
+          <q-breadcrumbs-el label="List" to="/scan" />
         </q-breadcrumbs>
       </div>
       <div class="col-auto flex items-center">
@@ -20,18 +24,17 @@
         />
       </div>
     </div>
-    <div class="row q-mt-xl">
+    <div class="row pt-xl">
       <q-card class="my-card col-12 shadow-transition">
         <q-card-section class="row">
           <div class="col separator-dashed">
             <div class="row q-col-gutter-lg justify-center">
-              <div class="col-auto ">
+              <div class="col-auto">
                 <q-icon
                   class="circle-secondary q-pa-md"
                   color="secondary"
                   name="r_article"
                   size="24px"
-
                 />
               </div>
               <div class="col-auto">
@@ -42,13 +45,12 @@
           </div>
           <div class="col separator-dashed">
             <div class="row q-col-gutter-md justify-center">
-              <div class="col-auto ">
+              <div class="col-auto">
                 <q-icon
                   class="circle-positive q-pa-md"
                   color="positive"
                   name="r_check_circle"
                   size="24px"
-
                 />
               </div>
               <div class="col-auto">
@@ -59,13 +61,12 @@
           </div>
           <div class="col separator-dashed">
             <div class="row q-col-gutter-md justify-center">
-              <div class="col-auto ">
+              <div class="col-auto">
                 <q-icon
                   class="circle-info q-pa-md"
                   color="info"
                   name="r_track_changes"
                   size="24px"
-
                 />
               </div>
               <div class="col-auto">
@@ -76,13 +77,12 @@
           </div>
           <div class="col separator-dashed">
             <div class="row q-col-gutter-md justify-center">
-              <div class="col-auto ">
+              <div class="col-auto">
                 <q-icon
                   class="circle-warning q-pa-md"
                   color="warning"
                   name="r_watch_later"
                   size="24px"
-
                 />
               </div>
               <div class="col-auto">
@@ -93,13 +93,12 @@
           </div>
           <div class="col">
             <div class="row q-col-gutter-md justify-center">
-              <div class="col-auto ">
+              <div class="col-auto">
                 <q-icon
                   class="circle-negative q-pa-md"
                   color="negative"
                   name="r_error"
                   size="24px"
-
                 />
               </div>
               <div class="col-auto flex items-center row">
@@ -111,7 +110,7 @@
         </q-card-section>
       </q-card>
     </div>
-    <div class="row q-mt-xl">
+    <div class="row pt-xl">
       <q-card class="my-card col-12">
         <div>
           <q-tabs
@@ -147,7 +146,7 @@
               </q-chip>
               <span class="subtitle2 text-light-primary q-px-xs">Finished</span>
             </q-tab>
-            <q-tab name="scanning">
+            <q-tab name="scanning" :disable="count.scanning === 0">
               <q-chip
                 class="caption"
                 color="info"
@@ -159,7 +158,7 @@
               </q-chip>
               <span class="subtitle2 text-light-primary q-px-xs">Scanning</span>
             </q-tab>
-            <q-tab name="waiting">
+            <q-tab name="waiting" :disable="count.waiting === 0">
               <q-chip
                 class="caption"
                 color="warning"
@@ -171,7 +170,7 @@
               </q-chip>
               <span class="subtitle2 text-light-primary q-px-xs">Waiting</span>
             </q-tab>
-            <q-tab name="failed">
+            <q-tab name="failed" :disable="count.failed === 0">
               <q-chip
                 class="caption"
                 color="negative"
@@ -184,60 +183,69 @@
               <span class="subtitle2 text-light-primary q-px-xs">Failed</span>
             </q-tab>
           </q-tabs>
-          <q-separator/>
+          <q-separator />
         </div>
         <q-card-section>
           <q-tab-panels v-model="tab" animated>
             <q-tab-panel name="all">
-              <AllScanTable @count="handleCount"/>
+              <AllScanTable @count="handleCount" />
             </q-tab-panel>
             <q-tab-panel name="finished">
-              <FinishedScanTable/>
+              <FinishedScanTable />
             </q-tab-panel>
             <q-tab-panel name="scanning">
-              <ScanningTable/>
+              <ScanningTable />
+            </q-tab-panel>
+            <q-tab-panel name="waiting">
+              <WaitingTable />
+            </q-tab-panel>
+            <q-tab-panel name="failed">
+              <FailedTable />
             </q-tab-panel>
           </q-tab-panels>
         </q-card-section>
       </q-card>
-
     </div>
   </q-page>
 </template>
 
 <script lang="ts" setup>
-import {Ref, ref} from 'vue'
-import AllScanTable from 'components/scan/AllScanTable.vue'
-import ScanningTable from 'components/scan/ScanningTable.vue'
-import NewScan from 'components/scan/NewScan.vue'
-import {useQuasar} from 'quasar';
-import FinishedScanTable from 'components/scan/FinishedScanTable.vue'
-const tab = ref('all')
-const count:Ref = ref({
+import { Ref, ref } from 'vue';
+import AllScanTable from 'components/scan/AllScanTable.vue';
+import ScanningTable from 'components/scan/ScanningTable.vue';
+import NewScan from 'components/scan/NewScan.vue';
+import { useQuasar } from 'quasar';
+import FinishedScanTable from 'components/scan/FinishedScanTable.vue';
+import WaitingTable from 'components/scan/WaitingTable.vue';
+import FailedTable from 'components/scan/FailedTable.vue';
+const tab = ref('all');
+const count: Ref = ref({
   all: 0,
   finished: 0,
   scanning: 0,
   waiting: 0,
-  failed: 0
-
-})
-const $q = useQuasar()
+  failed: 0,
+});
+const $q = useQuasar();
 const handleNewScan = function () {
   $q.dialog({
     component: NewScan,
-    componentProps: {}
-  }).onOk(() => {
-    console.log('OK')
-  }).onCancel(() => {
-    console.log('Cancel')
-  }).onDismiss(() => {
-    console.log('Called on OK or Cancel')
+    componentProps: {},
   })
-}
+    .onOk(() => {
+      console.log('OK');
+    })
+    .onCancel(() => {
+      console.log('Cancel');
+    })
+    .onDismiss(() => {
+      console.log('Called on OK or Cancel');
+    });
+};
 const handleCount = function (e: object) {
-  count.value = e
-  console.log(count.value.all)
-}
+  count.value = e;
+  console.log(count.value.all);
+};
 </script>
 <style lang="scss" scoped>
 .tab-header {
@@ -245,7 +253,7 @@ const handleCount = function (e: object) {
 }
 
 .separator-dashed {
-  border-right: 1px dashed #919EAB
+  border-right: 1px dashed #919eab;
 }
 
 .circle-secondary {

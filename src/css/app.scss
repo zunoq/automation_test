@@ -2,179 +2,282 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
 @font-face {
   //800
   font-family: 'Public Sans Extra Bold';
   src: url(../assets/font/Public_Sans/PublicSans-ExtraBold.ttf);
+  font-display: swap;
 }
+
 @font-face {
   //700
   font-family: 'Public Sans Bold';
   src: url(../assets/font/Public_Sans/PublicSans-Bold.ttf);
+  font-display: swap;
 }
+
 @font-face {
   //600
   font-family: 'Public Sans Semi Bold';
   src: url(../assets/font/Public_Sans/PublicSans-SemiBold.ttf);
+  font-display: swap;
 }
+
 @font-face {
   //500
   font-family: 'Public Sans Medium';
   src: url(../assets/font/Public_Sans/PublicSans-Medium.ttf);
+  font-display: swap;
 }
+
 @font-face {
   //400
   font-family: 'Public Sans Regular';
   src: url(../assets/font/Public_Sans/PublicSans-Regular.ttf);
+  font-display: swap;
 }
+
 @font-face {
   //300
   font-family: 'Public Sans Light';
   src: url(../assets/font/Public_Sans/PublicSans-Light.ttf);
+  font-display: swap;
 }
+
 @font-face {
   //200
   font-family: 'Public Sans Extra Light';
   src: url(../assets/font/Public_Sans/PublicSans-ExtraLight.ttf);
+  font-display: swap;
 }
+
 @font-face {
   //100
   font-family: 'Public Sans Thin';
   src: url(../assets/font/Public_Sans/PublicSans-Thin.ttf);
 }
+
 @font-face {
   font-family: 'Public Sans Italic';
   src: url(../assets/font/Public_Sans/PublicSans-Italic.ttf);
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Public Sans Bold Italic';
   src: url(../assets/font/Public_Sans/PublicSans-BoldItalic.ttf);
+  font-display: swap;
 }
+
 @font-face {
   font-family: 'Public Sans Thin Italic';
   src: url(../assets/font/Public_Sans/PublicSans-ThinItalic.ttf);
+  font-display: swap;
 }
+
 .text-regular {
   font-family: 'Public Sans', serif;
 }
+
 .text-bold {
   font-family: 'Public Sans Bold', serif;
 }
+
 .text-thin {
   font-family: 'Public Sans Thin', serif;
 }
+
 .text-italic {
   font-family: 'Public Sans Italic', serif;
 }
+
 .text-bold-italic {
   font-family: 'Public Sans Bold Italic', serif;
 }
+
 .text-thin-italic {
   font-family: 'Public Sans Thin Italic', serif;
 }
+
 .q-card {
   border-radius: 16px;
   box-shadow: 0 0 2px rgba(145, 158, 171, 0.2), 0 12px 24px -4px rgba(145, 158, 171, 0.12);
 }
 
+.ma-xl {
+  margin: 40px;
+}
+
+.mt-xl {
+  margin-top: 40px;
+}
+
+.mb-xl {
+  margin-bottom: 40px;
+}
+
+.ml-xl {
+  margin-left: 40px;
+}
+
+.mr-xl {
+  margin-right: 40px;
+}
+
+.mx-xl {
+  margin: 0 40px;
+}
+
+.my-xl {
+  margin: 40px 0;
+}
+
+.pa-xl {
+  padding: 40px
+}
+
+.pt-xl {
+  padding-top: 40px
+}
+
+.pb-xl {
+  padding-bottom: 40px;
+}
+
+.pl-xl {
+  padding-left: 40px
+}
+
+.pr-xl {
+  padding-right: 40px
+}
+
+.px-xl {
+  padding: 0 40px
+}
+
+.py-xl {
+  padding: 40px 0
+}
 
 .q-field--outlined .q-field__control::before {
   border-radius: 8px;
 }
+
 .radius-xs {
   border-radius: 4px;
 }
+
 .radius-sm {
   border-radius: 6px;
 }
+
 .radius-md {
   border-radius: 8px;
 }
+
 .radius-lg {
   border-radius: 12px;
 }
+
 .radius-xl {
   border-radius: 16px;
 }
+
 .text-dark {
   color: $dark;
 }
+
 .text-light-primary {
   color: $light-primary;
 }
+
 .text-light-secondary {
   color: $light-secondary;
 }
+
 .text-light-disable {
   color: $light-disable;
 }
+
 .h1 {
   font-family: 'Public Sans Extra Bold', sans-serif;
   font-style: normal;
   font-size: 64px;
   line-height: 80px;
 }
+
 .h2 {
   font-family: 'Public Sans Extra Bold', sans-serif;
   font-style: normal;
   font-size: 48px;
   line-height: 64px;
 }
+
 .h3 {
   font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
   font-size: 32px;
   line-height: 48px;
 }
+
 .h4 {
   font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
   font-size: 24px;
   line-height: 36px;
 }
+
 .h5 {
   font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
   font-size: 20px;
   line-height: 30px;
 }
+
 .h6 {
   font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
   font-size: 18px;
   line-height: 28px;
 }
+
 .subtitle1 {
   font-family: 'Public Sans Semi Bold', sans-serif;
   font-style: normal;
   font-size: 16px;
   line-height: 24px;
 }
+
 .subtitle2 {
   font-family: 'Public Sans Semi Bold', sans-serif;
   font-style: normal;
   font-size: 14px;
   line-height: 22px;
 }
+
 .body1 {
   font-family: 'Public Sans Regular', sans-serif;
   font-style: normal;
   font-size: 16px;
   line-height: 24px;
 }
+
 .body2 {
   font-family: 'Public Sans Regular', sans-serif;
   font-style: normal;
   font-size: 14px;
   line-height: 22px;
 }
+
 .caption {
   font-family: 'Public Sans Regular', sans-serif;
   font-style: normal;
   font-size: 12px;
   line-height: 18px;
 }
+
 .overline {
   font-family: 'Public Sans Bold', sans-serif;
   font-style: normal;
@@ -182,85 +285,112 @@
   line-height: 18px;
   text-transform: uppercase;
 }
+
 .underline {
   text-decoration: underline;
 }
+
 .underline-hover:hover {
   text-decoration: underline;
 }
+
 .overlay {
-  background: url('src/assets/images/overlay_2.png') ;
+  background: url('src/assets/images/overlay_2.png');
   background-size: cover;
 }
+
 .blur {
   background-color: rgba(255, 255, 255, 0.85);
 }
+
 .bg-light {
   background-color: $background-light !important;
 }
+
 .bg-critical {
   background-color: $critical !important;
 }
+
 .text-critical {
   color: $critical !important;
 }
+
 .bg-high {
   background-color: $high !important;
 }
+
 .text-high {
   color: $high !important;
 }
+
 .bg-medium {
   background-color: $medium !important;
 }
+
 .text-medium {
   color: $medium !important;
 }
+
 .bg-low {
   background-color: $low !important;
 }
+
 .text-low {
   color: $low !important;
 }
+
 .bg-info {
   background-color: $info !important;
 }
+
 .text-info {
   color: $info !important;
 }
+
 .bg-all {
   background-color: $all !important;
 }
+
 .text-all {
   color: $all !important;
 }
+
 .bg-finished {
   background-color: $finished !important;
 }
+
 .text-finished {
   color: $finished !important;
 }
+
 .bg-scanning {
   background-color: $scanning !important;
 }
+
 .text-scanning {
   color: $scanning !important;
 }
+
 .bg-waiting {
   background-color: $waiting !important;
 }
+
 .text-waiting {
   color: $waiting !important;
 }
+
 .bg-failed {
   background-color: $failed !important;
 }
+
 .text-failed {
   color: $failed !important;
 }
+
 .bg-stopped {
   background-color: $stopped !important;
 }
+
 .text-stopped {
   color: $stopped !important;
 }

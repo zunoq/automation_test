@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container q-pa-lg">
+  <q-page class="container pa-xl">
     <div class="row q-col-gutter-lg">
       <div class="col-12">
         <vulns-statistics />

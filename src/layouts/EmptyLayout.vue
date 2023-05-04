@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 import {useI18n} from 'vue-i18n';
 import {LocalStorage} from 'quasar';
-import {onMounted, watch} from 'vue';
+import {onUpdated,onMounted, watch} from 'vue';
 
 const { locale} = useI18n({useScope: 'global'});
 const lang = LocalStorage.getItem('lang')
@@ -63,7 +63,11 @@ watch(locale, (newLang) => {
   LocalStorage.set('lang', newLang);
 })
 onMounted(() => {
+  console.log('parent mounted')
   getLocale()
+})
+onUpdated(()=>{
+  console.log('parent updated')
 })
 </script>
 <style>

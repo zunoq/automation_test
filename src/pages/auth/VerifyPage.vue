@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from 'vue'
+import { ref} from 'vue'
 import OTP from 'components/OTP.vue'
 
 const registerMail = ref('admin@admin.com')

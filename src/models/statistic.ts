@@ -13,6 +13,7 @@ export interface Cves {
   info: number;
 }
 export interface ScanRs {
+  _id: string,
   group_name: string,
   websites: [],
   time_started: string,

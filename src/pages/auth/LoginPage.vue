@@ -1,7 +1,10 @@
 <template>
   <q-page class="row overlay">
     <div class="col-9 flex flex-center blur">
-      <img alt="images" src="../../assets/images/signin_background.png"/>
+      <img alt="images" src="../../assets/images/signin_background.png"
+           style="width: 720px; height: 540px"
+
+      />
     </div>
     <div class="col-3 flex flex-center bg-white">
       <div class="row q-pa-xl">
@@ -9,7 +12,7 @@
         <div class="col-12 q-my-lg subtitle2 text-light-primary">
           New user?
           <span class="subtitle2 text-primary cursor-pointer underline-hover"
-                @click="this.$router.push('/register')"
+                @click="routerPage('register')"
           >
             Create an account
           </span>
@@ -28,14 +31,14 @@
           <div class="col-12 q-mb-md">
             <q-input
               v-model="account.password"
-              :type="showPassword ? 'text' : 'password'"
+              :type="visibility"
               class="radius-md"
               label="Password"
               outlined
             >
               <template v-slot:append>
                 <q-icon
-                  :name="showPassword ? 'r_visibility_off' : 'r_visibility'"
+                  :name="changeIcon"
                   class="cursor-pointer"
                   color="text-light-secondary"
                   @click="showPassword = !showPassword"
@@ -49,7 +52,7 @@
               flat
               label="Forgot password?"
               no-caps
-              @click="this.$router.push('/forgot-password')"
+              @click="routerPage('forgot-password')"
             />
           </div>
           <div class="col-12">
@@ -66,30 +69,47 @@
           </div>
         </q-form>
       </div>
+      <q-btn flat
+          size="md"
+          color="primary"
+
+          label="OK"
+             @click="routerPage('verify')"
+      />
     </div>
   </q-page>
 </template>
 
 <script lang="ts" setup>
-import {reactive, ref} from 'vue';
+import {reactive, ref, computed} from 'vue';
+import { useRouter } from 'vue-router'
 import {Notify} from 'quasar';
-// import Services from "src/services/user.service"
 import {useAuthStore} from 'stores/auth'
 
 interface Account {
   email: string;
   password: string;
 }
-
+const router = useRouter()
 const authStore = useAuthStore()
 const loading = ref(false);
-let showPassword = ref(false);
-// let loading = ref(false);
+const showPassword = ref(false)
 const account: Account = reactive({
   email: '',
   password: '',
 });
+const visibility =  computed(()=>{
+  return showPassword.value ? 'text' : 'password'
+})
+const changeIcon = computed(
+  ()=>{
+    return showPassword.value ? 'r_visibility_off' : 'r_visibility'
+  }
+)
 
+const routerPage = (path:string) => {
+  router.push(`/${path}`)
+}
 
 async function login() {
   loading.value = true;
